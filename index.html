@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pratik Singh — applied AI and software developer building real-world products across web, mobile, and agentic systems.">
+  <meta name="keywords" content="Pratik Singh, applied AI, software developer, genai, LangChain, LangGraph, Next.js, Flutter, full stack">
+  <meta property="og:title" content="Pratik Singh — Applied AI & Software Developer">
+  <meta property="og:description" content="I build applied AI products, full-stack systems, and software used in the real world.">
+  <title>Pratik Singh — Applied AI & Software Developer</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Scroll Progress -->
+  <div id="progress-bar" aria-hidden="true"></div>
+
+  <!-- Quest Tracker (Easter Egg Feature) -->
+  <div id="quest-tracker" class="quest-tracker">
+    <button class="quest-egg-btn" id="quest-egg-btn" aria-label="Open easter egg tracker" title="Easter Egg Hunt">🥚</button>
+    <div class="quest-summary">
+      <span class="quest-label">Easter Egg Hunt: Active</span>
+      <div class="quest-summary-right">
+        <span id="egg-counter" class="quest-count">0 / 5</span>
+        <button id="quest-toggle" class="quest-toggle" type="button" aria-expanded="true" aria-controls="hint-box" aria-label="Minimize quest hints">−</button>
+      </div>
+    </div>
+    <div id="hint-box" class="hint-box">
+      <p id="hint-text">This website has 5 easter eggs. Click for a clue.</p>
+      <button id="next-hint" class="hint-btn">Next Clue</button>
+    </div>
+  </div>
+
+  <!-- Achievement Modal (Easter Egg) -->
+  <div id="achievement-modal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="achievement-icon">🏆</div>
+      <h2>Achievement Unlocked</h2>
+      <p>You found a hidden greeting easter egg!</p>
+      <p class="achievement-meta">Difficulty: Easy</p>
+    </div>
+  </div>
+
+  <!-- Sudo Modal (Easter Egg) -->
+  <div id="sudo-modal" class="modal" aria-hidden="true">
+    <div class="modal-content terminal-style">
+      <div class="terminal-header">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+      </div>
+      <p class="terminal-text"><span class="prompt">$</span> sudo access --all</p>
+      <p class="terminal-error">[ERROR] Permission denied: User 'visitor' is not in the sudoers file. This incident will be reported.</p>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="nav" aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo" id="main-logo" aria-label="Pratik Singh - Home">PS</a>
+      <div class="nav-links" id="nav-links" role="navigation">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#reading" class="nav-link">Reading</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-right">
+        <button id="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links">
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="hero-header reveal-up">
+          <p class="hero-tag">Applied AI &amp; Software Developer</p>
+        </div>
+        <h1 class="hero-name reveal-up delay-1">Pratik<br><span class="name-accent">Singh.</span></h1>
+        <p class="hero-sub reveal-up delay-2">I build <em>applied AI</em> products and full-stack systems.<br>From school AI ecosystems to agentic software you can operate from your phone.</p>
+        <div class="hero-cta reveal-up delay-3">
+          <a href="#projects" class="btn btn-primary">See Products</a>
+          <a href="#contact" class="btn btn-ghost">Work With Me</a>
+        </div>
+      </div>
+      <div class="hero-scroll-hint" aria-hidden="true">
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-left">
+            <p class="section-label reveal-up">About</p>
+            <h2 class="section-heading reveal-up delay-1">An applied AI engineer<br>who ships end-to-end.</h2>
+          </div>
+          <div class="about-right reveal-up delay-2">
+            <p class="about-para">I'm Pratik — an applied AI and software developer with 6+ years of experience building products across web, mobile, backend, and agentic systems. I work fluently across Python, TypeScript, JavaScript, Next.js, Flutter, SQL, Postgres, MongoDB, Supabase, Firebase, and clean architecture.</p>
+            <p class="about-para">I don't just write code. I design products, plan systems, and ship them into the real world. My focus is practical AI: LangChain, LangGraph, AutoGen, DSPy, orchestration, memory systems, product-grade backends, and interfaces that real users actually adopt. Right now I'm deepening core ML, AI, linear algebra, and probability to push from strong builder to complete applied AI engineer.</p>
+            <div class="about-stats">
+              <div class="stat">
+                <span class="stat-num">6+</span>
+                <span class="stat-label">Years building</span>
+              </div>
+              <div class="stat">
+                <span class="stat-num">20+</span>
+                <span class="stat-label">Projects shipped</span>
+              </div>
+              <div class="stat" id="infinity-stat">
+                <span class="stat-num">∞</span>
+                <span class="stat-label">Hours studying and building</span>
+              </div>
+            </div>
+            <div id="hidden-quote" class="hidden-message">"Curiosity is the engine of achievement."</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section section-alt">
+      <div class="container">
+        <p class="section-label reveal-up">Selected Work</p>
+        <h2 class="section-heading reveal-up delay-1">Products I've built and scaled.</h2>
+        <div class="projects-list">
+
+          <article class="project-item reveal-up delay-1">
+            <div class="project-meta">
+              <span class="project-number">01</span>
+              <div class="project-tags">
+                <span class="tag">TypeScript</span>
+                <span class="tag">Node</span>
+                <span class="tag">Discord</span>
+                <span class="tag">Telegram</span>
+                <span class="tag">CDP</span>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">FluidGravity</h3>
+              <p class="project-desc">Operate Antigravity from your phone. <strong><em>FluidGravity</em></strong> is an automation and control layer for <strong><em>Discord</em></strong> and <strong><em>Telegram</em></strong> with product-minded remote operations, <strong><em>orchestration</em></strong>, and reliability built in from day one.</p>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/PratikSingh121/FluidGravity" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View FluidGravity source code">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                GitHub
+              </a>
+              <span class="project-date">Mar 2026 · Active</span>
+            </div>
+          </article>
+
+          <article class="project-item reveal-up delay-2">
+            <div class="project-meta">
+              <span class="project-number">02</span>
+              <div class="project-tags">
+                <span class="tag">Next.js</span>
+                <span class="tag">Flutter</span>
+                <span class="tag">AI Agents</span>
+                <span class="tag">Supabase</span>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">AdhyayanAI</h3>
+              <p class="project-desc">Built an end-to-end <strong><em>AI ecosystem</em></strong> for schools: admin web app, two <strong><em>Flutter mobile apps</em></strong> for teachers and students, a <strong><em>smartboard app</em></strong>, backend systems, <strong><em>AI agents</em></strong>, and an <strong><em>ERP</em></strong> for school operations. Scaled to 15 schools and institutes.</p>
+            </div>
+            <div class="project-links">
+              <a href="https://adhyayanai.com" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View AdhyayanAI website">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Website
+              </a>
+              <span class="project-date">Dec 2024 – Sep 2025</span>
+            </div>
+          </article>
+
+          <article class="project-item reveal-up delay-3">
+            <div class="project-meta">
+              <span class="project-number">03</span>
+              <div class="project-tags">
+                <span class="tag">Llama</span>
+                <span class="tag">Next.js</span>
+                <span class="tag">RAG</span>
+                <span class="tag">Full Stack</span>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Study Bot</h3>
+              <p class="project-desc">Built the website, backend, <strong><em>model pipeline</em></strong>, and personalization system for an AI study product. Fine-tuned <strong><em>Llama 7B</em></strong>, implemented <strong><em>RAG</em></strong>, optimized inference for efficiency, and designed <strong><em>memory management</em></strong> that is 10× cheaper than MemGPT while staying personalization-first.</p>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/PratikSingh121/Humanize_ai_project" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Study Bot source code">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.87 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                GitHub
+              </a>
+              <span class="project-date">Mar 2025</span>
+            </div>
+          </article>
+
+          <article class="project-item reveal-up delay-4">
+            <div class="project-meta">
+              <span class="project-number">04</span>
+              <div class="project-tags">
+                <span class="tag">Python</span>
+                <span class="tag">LangChain</span>
+                <span class="tag">OpenAI</span>
+                <span class="tag">Mermaid.js</span>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">ResearchPlot</h3>
+              <p class="project-desc">A <strong><em>Python</em></strong> research tool built on <strong><em>LangChain</em></strong> and <strong><em>OpenAI</em></strong> that maps research into interactive <strong><em>mindmaps</em></strong> via <strong><em>Mermaid.js</em></strong> for easy visual understanding. Reposted by <strong><em>LangChain's official X</em></strong> and <strong><em>Harrison Chase</em></strong> (CEO of LangChain). <strong>80+ GitHub stars.</strong></p>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/PratikSingh121/ResearchPlot" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View ResearchPlot source code">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                GitHub
+              </a>
+              <span class="project-date">Dec 19, 2023</span>
+            </div>
+          </article>
+
+          <article class="project-item reveal-up delay-5">
+            <div class="project-meta">
+              <span class="project-number">05</span>
+              <div class="project-tags">
+                <span class="tag">Prompts</span>
+                <span class="tag">AI Systems</span>
+                <span class="tag">Research</span>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Prompt Engineering Codex</h3>
+              <p class="project-desc">A public codex distilled from analyzing <strong><em>system prompts</em></strong> from leading AI products including <strong><em>Cursor</em></strong>, <strong><em>v0</em></strong>, <strong><em>Cline</em></strong>, <strong><em>Bolt</em></strong>, Windsurf, Devin AI, and others. Turns scattered <strong><em>prompting patterns</em></strong> into a practical, reusable synthesis of what makes prompts actually work.</p>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/PratikSingh121/Prompt_Engineering_Codex" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Prompt Engineering Codex source code">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                GitHub
+              </a>
+              <span class="project-date">Jul 12, 2025</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section">
+      <div class="container">
+        <p class="section-label reveal-up">Capabilities</p>
+        <h2 class="section-heading reveal-up delay-1">Applied AI, product, and systems depth.</h2>
+
+        <div class="skills-grid reveal-up delay-2">
+          <div class="skill-group">
+            <h3 class="skill-group-title">Applied AI</h3>
+            <ul class="skill-list">
+              <li>LangChain / LangGraph</li>
+              <li>AutoGen / DSPy</li>
+              <li>RAG, orchestration, memory systems</li>
+              <li>Fine-tuning and inference optimization</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3 class="skill-group-title">Full Stack &amp; Mobile</h3>
+            <ul class="skill-list">
+              <li>Python / TypeScript / JavaScript</li>
+              <li>Next.js / Node.js</li>
+              <li>Flutter</li>
+              <li>Web, mobile, backend, and APIs</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3 class="skill-group-title">Data, Infra &amp; Architecture</h3>
+            <ul class="skill-list">
+              <li>SQL / PostgreSQL / MongoDB</li>
+              <li>Supabase / Firebase</li>
+              <li>Clean architecture</li>
+              <li>Product design, planning, and scale</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reading Section -->
+    <section id="reading" class="section section-alt">
+      <div class="container">
+        <p class="section-label reveal-up">Now Studying</p>
+        <h2 class="section-heading reveal-up delay-1">Core ML, AI, and the math underneath.</h2>
+        <div class="reading-grid">
+          <div class="reading-status reveal-up delay-2">
+            <h3 class="reading-title">Current Focus</h3>
+            <div class="book-current">
+              <img src="images/linear-algebra-cover.jpg" alt="Introduction to Linear Algebra by Gilbert Strang" class="book-cover-img" width="120" height="180" loading="lazy">
+              <div class="book-info">
+                <span class="book-author">Gilbert Strang</span>
+                <span class="book-name">Introduction to Linear Algebra</span>
+                <p class="book-note">Studying the mathematical foundations properly, in parallel with probability and statistics from Stat110, to become complete in core ML and AI.</p>
+              </div>
+            </div>
+          </div>
+          <div class="reading-favorites reveal-up delay-3">
+            <h3 class="reading-title">Active Tracks</h3>
+            <ul class="favorites-list">
+              <li>
+                <span class="fav-title">Probability and Statistics</span>
+                <span class="fav-author">Stat110</span>
+              </li>
+              <li>
+                <span class="fav-title">Core Machine Learning</span>
+                <span class="fav-author">Theory + implementation</span>
+              </li>
+              <li>
+                <span class="fav-title">Applied AI Systems</span>
+                <span class="fav-author">Agents, memory, orchestration</span>
+              </li>
+              <li>
+                <span class="fav-title">Product and Architecture</span>
+                <span class="fav-author">Clean systems that scale</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="container container-narrow">
+        <p class="section-label reveal-up">Contact</p>
+        <h2 class="section-heading reveal-up delay-1">Building in AI, product, or software?<br>Let's talk.</h2>
+        <p class="contact-sub reveal-up delay-2">If you're building applied AI, education software, agent systems, developer tools, or product infrastructure, I'm interested in hard problems with real users.</p>
+        <div class="contact-links reveal-up delay-3">
+          <a href="mailto:pratikcoding121@gmail.com" class="contact-link" id="email-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            pratikcoding121@gmail.com
+          </a>
+          <a href="https://github.com/pratiksingh121" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/pratiksingh121" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://x.com/pratiksingh121" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4l16 16"/><path d="M20 4 4 20"/></svg>
+            X
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <p class="footer-copy">&copy; 2026 Pratik Singh</p>
+        <p class="footer-made">Applied AI. Full-stack software. Real products.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
